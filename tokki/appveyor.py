@@ -49,7 +49,8 @@ class AppVeyor:
         self.repos = []
 
     def __getitem__(self, key) -> AppVeyorRepo:
-        return AppVeyorRepo(key)
+        found = [x for x in self.repos if x.name == key]
+        return found[0] if found else None
 
     @property
     def repos(self):
