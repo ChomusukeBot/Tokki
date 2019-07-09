@@ -26,5 +26,5 @@ class AppVeyor:
             "User-Agent": useragent
         }
 
-    def __getitem__(self, key):
+    def __getitem__(self, key) -> AppVeyorRepo:
         return AppVeyorRepo(key)
