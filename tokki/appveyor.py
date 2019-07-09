@@ -20,6 +20,11 @@ class AppVeyor:
         self.useragent = useragent
         self.loop = loop or asyncio.get_event_loop()
         self.session = aiohttp.ClientSession()
+        self.headers = {
+            "Accept": "application/json",
+            "Authorization": f"Bearer {token}",
+            "User-Agent": useragent
+        }
 
     def __getitem__(self, key):
         return AppVeyorRepo(key)
