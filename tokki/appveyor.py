@@ -25,6 +25,14 @@ class AppVeyor:
             "Authorization": f"Bearer {token}",
             "User-Agent": useragent
         }
+        self.repos = []
 
     def __getitem__(self, key) -> AppVeyorRepo:
         return AppVeyorRepo(key)
+
+    @property
+    def repos(self):
+        """
+        Gets all of the repos for the AppVeyor account.
+        """
+        return self.repos
