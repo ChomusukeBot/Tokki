@@ -6,8 +6,8 @@ class AppVeyorRepo:
     """
     Repository for an AppVeyor user.
     """
-    def __init__(self, name, client):
-        self.name = name
+    def __init__(self, data, client):
+        self.data = data
         self.client = client
 
 
