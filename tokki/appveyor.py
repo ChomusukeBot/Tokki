@@ -19,6 +19,7 @@ class AppVeyor:
         self.token = token
         self.useragent = useragent
         self.loop = loop or asyncio.get_event_loop()
+        self.session = aiohttp.ClientSession()
 
     def __getitem__(self, key):
         return AppVeyorRepo(key)
