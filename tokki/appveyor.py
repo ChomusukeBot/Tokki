@@ -46,15 +46,8 @@ class AppVeyor:
             "Authorization": f"Bearer {token}",
             "User-Agent": useragent
         }
-        self.repos = []
 
-    def __getitem__(self, key) -> AppVeyorRepo:
-        found = [x for x in self.repos if x.name == key]
-        return found[0] if found else None
-
-    @property
-    def repos(self):
+    async def get_repo(self, name):
         """
-        Gets all of the repos for the AppVeyor account.
+        Gets a repo from the AppVeyor server.
         """
-        return self.repos
