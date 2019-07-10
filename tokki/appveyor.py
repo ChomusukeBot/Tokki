@@ -1,5 +1,4 @@
-import aiohttp
-import asyncio
+from .base import BaseClient
 
 
 class AppVeyorRepo:
@@ -32,22 +31,22 @@ class AppVeyorRepo:
         return self.data.get("accountName", None)
 
 
-class AppVeyor:
+class AppVeyorClient(BaseClient):
     """
     AppVeyor API implementation.
     """
-    def __init__(self, token, useragent, loop=None):
-        self.token = token
-        self.useragent = useragent
-        self.loop = loop or asyncio.get_event_loop()
-        self.session = aiohttp.ClientSession()
-        self.headers = {
-            "Accept": "application/json",
-            "Authorization": f"Bearer {token}",
-            "User-Agent": useragent
-        }
+    def __init__(self, token, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.headers["Authorization"] = f"Bearer {token}"
 
     async def get_repo(self, name):
         """
         Gets a repo from the AppVeyor server.
         """
+        # Request the specific repo endpoint
+        async with self.session.get("") as resp:
+            # Ensure that we have a code 200
+            resp.raise_for_status()
+
+            # Return the new object
+            return AppVeyorRepo(await resp.json())
