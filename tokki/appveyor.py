@@ -1,7 +1,7 @@
-from .base import BaseClient, BaseRepo
+from .base import BaseClient, BaseProject
 
 
-class AppVeyorRepo(BaseRepo):
+class AppVeyorRepo(BaseProject):
     """
     Repository for an AppVeyor user.
     """

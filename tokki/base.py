@@ -32,6 +32,18 @@ class BaseRepo():
         raise NotImplementedError
 
 
+class BaseProject(BaseRepo):
+    """
+    Base project for all API calls.
+    A Project is a Repo inside a CI service.
+    """
+    async def trigger_build(self, message=None):
+        """
+        Triggers a build on the CI service.
+        """
+        raise NotImplementedError
+
+
 class BaseClient():
     """
     Base client for all of the API calls.
