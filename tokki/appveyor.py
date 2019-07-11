@@ -61,6 +61,6 @@ class AppVeyorClient(BaseClient):
         Gets a repo from the AppVeyor server.
         """
         # Request the "specific repo" endpoint
-        json = await super()._get_request(f"https://ci.appveyor.com/api/projects/{slug}")
+        json = await self._get_request(f"https://ci.appveyor.com/api/projects/{slug}")
         # Return the new object
         return AppVeyorRepo(json, self)
