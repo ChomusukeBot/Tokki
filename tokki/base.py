@@ -15,21 +15,21 @@ class BaseRepo():
         """
         The name of the repository.
         """
-        return None
+        raise NotImplementedError
 
     @property
     def slug(self):
         """
         The slug of the repository.
         """
-        return None
+        raise NotImplementedError
 
     @property
     def owner(self):
         """
         The user or organization that owns the repo.
         """
-        return None
+        raise NotImplementedError
 
 
 class BaseClient():
