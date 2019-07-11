@@ -37,7 +37,7 @@ class BaseProject(BaseRepo):
     Base project for all API calls.
     A Project is a Repo inside a CI service.
     """
-    async def trigger_build(self, message=None):
+    async def trigger_build(self, *args, **kwargs):
         """
         Triggers a build on the CI service.
         """
