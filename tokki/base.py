@@ -43,3 +43,14 @@ class BaseClient():
             "Accept": "application/json",
             "User-Agent": useragent
         }
+
+    async def _get_request(self, url):
+        """
+        Makes a GET request and handles non 100-200-300 codes.
+        """
+        # Request the specific URL
+        async with self.session.get(url, headers=self.headers) as resp:
+            # Ensure that we have a code 200
+            resp.raise_for_status()
+            # Finally return the response
+            return resp, await resp.json()
