@@ -1,14 +1,10 @@
-from .base import BaseClient
+from .base import BaseClient, BaseRepo
 
 
-class AppVeyorRepo:
+class AppVeyorRepo(BaseRepo):
     """
     Repository for an AppVeyor user.
     """
-    def __init__(self, data, client):
-        self.data = data
-        self.client = client
-
     @property
     def name(self):
         """
