@@ -57,4 +57,4 @@ class BaseClient():
             # Ensure that we have a code 200
             resp.raise_for_status()
             # Finally return the response
-            return resp, await resp.json()
+            return await resp.json()
