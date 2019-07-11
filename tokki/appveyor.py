@@ -26,6 +26,13 @@ class AppVeyorRepo(BaseProject):
         """
         return self.data["project"]["accountName"]
 
+    @property
+    def default_branch(self):
+        """
+        The default branch of the repository.
+        """
+        return self.data["project"]["repositoryBranch"]
+
 
 class AppVeyorClient(BaseClient):
     """

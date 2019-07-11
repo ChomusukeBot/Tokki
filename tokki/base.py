@@ -31,6 +31,13 @@ class BaseRepo():
         """
         raise NotImplementedError
 
+    @property
+    def default_branch(self):
+        """
+        The default branch of the repository.
+        """
+        raise NotImplementedError
+
 
 class BaseProject(BaseRepo):
     """
