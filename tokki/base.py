@@ -77,3 +77,14 @@ class BaseClient():
             resp.raise_for_status()
             # Finally return the response
             return await resp.json()
+
+    async def _post_request(self, url, data):
+        """
+        Makes a POST request and handles non 100-200-300 codes.
+        """
+        # Request the specific URL
+        async with self.session.post(url, headers=self.headers, data=data) as resp:
+            # Ensure that we have a code 200
+            resp.raise_for_status()
+            # Finally return the response
+            return await resp.json()

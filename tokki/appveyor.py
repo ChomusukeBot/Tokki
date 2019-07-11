@@ -33,6 +33,20 @@ class AppVeyorRepo(BaseProject):
         """
         return self.data["project"]["repositoryBranch"]
 
+    async def trigger_build(self, *, branch=None):
+        """
+        Triggers an AppVeyor build for the specified branch with the specified message.
+        If branch is None, the build is triggered on the default branch.
+        """
+        # Format the data to use
+        data = {
+            "accountName": self.owner,
+            "projectSlug": self.slug,
+            "branch": branch if branch else self.default_branch
+        }
+        # Just make a post request to trigger a build
+        await self.client._post_request("https://ci.appveyor.com/api/builds", data)
+
 
 class AppVeyorClient(BaseClient):
     """
