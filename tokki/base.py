@@ -38,7 +38,7 @@ class BaseClient():
     """
     def __init__(self, useragent, loop=None):
         self.loop = loop or asyncio.get_event_loop()
-        self.session: aiohttp.ClientSession = aiohttp.ClientSession()
+        self.session: aiohttp.ClientSession = aiohttp.ClientSession(loop=self.loop)
         self.headers = {
             "Accept": "application/json",
             "User-Agent": useragent
