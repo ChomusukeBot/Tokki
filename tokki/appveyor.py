@@ -35,14 +35,11 @@ class AppVeyorClient(BaseClient):
         super().__init__(*args, **kwargs)
         self.headers["Authorization"] = f"Bearer {token}"
 
-    async def get_repo(self, name):
+    async def get_repo(self, slug):
         """
         Gets a repo from the AppVeyor server.
         """
-        # Request the specific repo endpoint
-        async with self.session.get("") as resp:
-            # Ensure that we have a code 200
-            resp.raise_for_status()
-
-            # Return the new object
-            return AppVeyorRepo(await resp.json())
+        # Request the "specific repo" endpoint
+        json = await super()._get_request(f"https://ci.appveyor.com/api/projects/{slug}")
+        # Return the new object
+        return AppVeyorRepo(json, self)
