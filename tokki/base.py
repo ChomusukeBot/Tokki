@@ -44,6 +44,10 @@ class BaseClient():
             "User-Agent": useragent
         }
 
+    def __del__(self):
+        # Once a deletion has been requested, close the session on the same loop
+        asyncio.ensure_future(self.session.close(), loop=self.loop)
+
     async def _get_request(self, url):
         """
         Makes a GET request and handles non 100-200-300 codes.
