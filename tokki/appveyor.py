@@ -10,21 +10,21 @@ class AppVeyorRepo(BaseRepo):
         """
         The name of the repository.
         """
-        return self.data.get("name", None)
+        return self.data["project"]["name"]
 
     @property
     def slug(self):
         """
         The slug of the repository.
         """
-        return self.data.get("slug", None)
+        return self.data["project"]["slug"]
 
     @property
     def owner(self):
         """
         The user or organization that owns the repo.
         """
-        return self.data.get("accountName", None)
+        return self.data["project"]["accountName"]
 
 
 class AppVeyorClient(BaseClient):
