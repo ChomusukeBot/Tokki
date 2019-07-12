@@ -1,20 +1,11 @@
-.. Tokki documentation master file, created by
-   sphinx-quickstart on Fri Jul 12 03:12:37 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to Tokki's documentation!
-=================================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-
-Indices and tables
+Welcome to Tokki!
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Tokki is a Python Package that provides Asynchronous APIs for the following services:
+
+.. toctree::
+    :maxdepth: 2
+
+    appveyor
+
+It was originally created for the use on Discord.py bots, to avoid the blocking of the loop when making REST request to the APIs.
