@@ -6,6 +6,7 @@ author = "Hannele Ruiz"
 
 # The extensions that are going to be loaded
 extensions = [
+    "sphinx.ext.autodoc"
 ]
 
 # Stuff to ignore when we are looking for documentation
