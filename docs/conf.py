@@ -16,9 +16,8 @@ html_static_path = ["_static"]
 
 # The Theme to use for the HTTP content
 # This is required for Read the Docs
-html_theme = "mxtheme"
-# The custom theme options
-html_theme_options = {
-    "primary_color": "pink",
-    "accent_color": "cyan"
-}
+html_theme = "sphinx_rtd_theme"
+# Custom CSS files to use
+html_css_files = [
+    "tokki.css"
+]
