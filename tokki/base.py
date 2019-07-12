@@ -57,7 +57,7 @@ class BaseClient():
     """
     def __init__(self, useragent, loop=None):
         self.loop = loop or asyncio.get_event_loop()
-        self.session: aiohttp.ClientSession = aiohttp.ClientSession(loop=self.loop)
+        self.session: aiohttp.ClientSession = aiohttp.ClientSession(loop=self.loop, raise_for_status=True)
         self.headers = {
             "Accept": "application/json",
             "User-Agent": useragent
@@ -73,8 +73,6 @@ class BaseClient():
         """
         # Request the specific URL
         async with self.session.get(url, headers=self.headers) as resp:
-            # Ensure that we have a code 200
-            resp.raise_for_status()
             # Finally return the response
             return await resp.json()
 
@@ -84,7 +82,5 @@ class BaseClient():
         """
         # Request the specific URL
         async with self.session.post(url, headers=self.headers, data=data) as resp:
-            # Ensure that we have a code 200
-            resp.raise_for_status()
             # Finally return the response
             return await resp.json()
