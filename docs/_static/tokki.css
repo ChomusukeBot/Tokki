@@ -1,0 +1,39 @@
+/*
+I'm terrible for CSS, so send a PR if something is wrong!
+*/
+
+/* Top left side, where the House icon and "Tokki" text is */
+.wy-side-nav-search {
+    background-color: #F594D0;
+}
+
+/* Space surrounding the "Search docs" input field */
+.wy-side-nav-search input[type=text] {
+    border-color: #BD609A;
+}
+
+/* Color that fills the links on the left navigation bar when clicked */
+div.local-toc a:active {
+    background-color: #ff82d0;
+    color: #ffffff;
+}
+
+/* Color of the links of the left navigation bar */
+div.local-toc a  {
+    color: #d9d9d9;
+}
+
+/* Color of the Tokki text on the side of the house */
+a:visited.icon  {
+    color: #ffffff;
+}
+
+/* Color of already visited links */
+a:visited {
+    color: #C3619E;
+}
+
+/* Color of non visited links */
+a {
+    color: #ff82d0;
+}
