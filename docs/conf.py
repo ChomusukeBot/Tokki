@@ -1,9 +1,3 @@
-import os
-import sys
-
-# This is required for finding the Tokki package
-sys.path.insert(0, os.path.abspath("../"))
-
 # Basic information
 project = "Tokki"
 copyright = "2019 Hannele Ruiz"
