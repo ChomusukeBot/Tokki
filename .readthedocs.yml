@@ -1,0 +1,15 @@
+# This is required by RTD
+version: 2
+
+# Build Sphinx from the docs folder
+sphinx:
+  configuration: docs/conf.py
+
+# Use Python 3.7 for everything
+python:
+  version: 3.7
+  install:
+    - method: pip
+      path: .
+    - requirements: requirements.txt
+    - requirements: docs/requirements.txt
