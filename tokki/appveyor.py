@@ -68,7 +68,7 @@ class AppVeyorClient(BaseClient):
         super().__init__(*args, **kwargs)
         self.headers["Authorization"] = f"Bearer {token}"
 
-    async def get_repo(self, slug):
+    async def get_project(self, slug):
         """
         Gets a repository (also called project) from the AppVeyor account.
 
