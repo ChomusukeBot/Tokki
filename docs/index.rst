@@ -7,6 +7,7 @@ Tokki is a Python Package that provides Asynchronous APIs for the following serv
     :maxdepth: 1
 
     appveyor/index
+    travis/index
 
 It was originally created for the use on Discord.py bots, to avoid the blocking of the loop when making REST request to the APIs.
 
