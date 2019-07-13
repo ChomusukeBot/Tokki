@@ -1,0 +1,18 @@
+# Use Ubuntu 16.04 LTS
+dist: xenial
+
+# Set the language to Python
+language: python
+
+# Do the testing on Python 3.7
+python:
+  - 3.7
+
+# Install the package as normal
+install:
+  - pip install .[docs]
+
+# Run pytests
+script:
+  - python -m coverage run -m pytest
+  - python -m coveralls
