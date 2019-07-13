@@ -94,8 +94,10 @@ class BaseClient():
         }
 
     def __del__(self):
+        # If the loop is closed, get another one
+        loop = asyncio.get_event_loop() if self.loop.is_closed() else self.loop
         # Once a deletion has been requested, close the session on the same loop
-        asyncio.ensure_future(self.session.close(), loop=self.loop)
+        asyncio.ensure_future(self.session.close(), loop=loop)
 
     async def _get_request(self, url):
         """
