@@ -4,7 +4,14 @@ import asyncio
 
 class BaseRepo():
     """
-    Base repository for all API calls.
+    Base repository for all Git/Mercurial services.
+
+    Parameters
+    -----------
+    data: :class:`dict`
+        Raw JSON response sent by the service.
+    client: :class:`BaseClient`
+        The client that generated this request.
     """
     def __init__(self, data, client):
         self.data = data
@@ -13,47 +20,63 @@ class BaseRepo():
     @property
     def name(self):
         """
-        The name of the repository.
+        :class:`str`: The name of the repository.
         """
         raise NotImplementedError
 
     @property
     def slug(self):
         """
-        The slug of the repository.
+        :class:`str`: The slug of the repository.
         """
         raise NotImplementedError
 
     @property
     def owner(self):
         """
-        The user or organization that owns the repo.
+        :class:`str`: The user or organization that owns the repo.
         """
         raise NotImplementedError
 
     @property
     def default_branch(self):
         """
-        The default branch of the repository.
+        :class:`str`: The default branch of the project.
         """
         raise NotImplementedError
 
 
 class BaseProject(BaseRepo):
     """
-    Base project for all API calls.
+    Base for all Continous Integration projects.
+
     A Project is a Repo inside a CI service.
+
+    It takes the same parameters as :class:`BaseRepo`.
     """
-    async def trigger_build(self, *args, **kwargs):
+    async def trigger_build(self, *, branch=None, message=None):
         """
-        Triggers a build on the CI service.
+        Triggers a manual build of the project.
+
+        Parameters
+        -----------
+        branch: :class:`str`
+            The branch to trigger the build from.
+        message: :class:`str`
+            The custom message to show on the build.
+            Custom messages are not available on AppVeyor.
         """
         raise NotImplementedError
 
 
 class BaseClient():
     """
-    Base client for all of the API calls.
+    Base client for all of the APIs.
+
+    Parameters
+    -----------
+    useragent: :class:`str`
+        The User-Agent header that the REST calls should use.
     """
     def __init__(self, useragent, loop=None):
         self.loop = loop or asyncio.get_event_loop()
@@ -69,7 +92,17 @@ class BaseClient():
 
     async def _get_request(self, url):
         """
-        Makes a GET request and handles non 100-200-300 codes.
+        Makes a standard GET request.
+
+        Parameters
+        -----------
+        url: :class:`str`
+            The URL to use for the request.
+
+        Returns
+        --------
+        :class:`dict`
+            The JSON response.
         """
         # Request the specific URL
         async with self.session.get(url, headers=self.headers) as resp:
@@ -78,7 +111,19 @@ class BaseClient():
 
     async def _post_request(self, url, data):
         """
-        Makes a POST request and handles non 100-200-300 codes.
+        Makes a standard POST request.
+
+        Parameters
+        -----------
+        url: :class:`str`
+            The URL to use for the request.
+        data: :class:`dict`
+            The data to send as part of the request.
+
+        Returns
+        --------
+        :class:`dict`
+            The JSON response.
         """
         # Request the specific URL
         async with self.session.post(url, headers=self.headers, data=data) as resp:

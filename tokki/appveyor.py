@@ -9,38 +9,21 @@ class AppVeyorRepo(BaseProject):
     """
     @property
     def name(self):
-        """
-        :class:`str`: The name of the repository.
-        """
         return self.data["project"]["name"]
 
     @property
     def slug(self):
-        """
-        :class:`str`: The slug of the repository.
-        """
         return self.data["project"]["slug"]
 
     @property
     def owner(self):
-        """
-        :class:`str`: The user or organization that owns the repo.
-        """
         return self.data["project"]["accountName"]
 
     @property
     def default_branch(self):
-        """
-        :class:`str`: The default branch of the project.
-        """
         return self.data["project"]["repositoryBranch"]
 
-    async def trigger_build(self, *, branch=None):
-        """
-        Triggers an AppVeyor build for the specified branch with the specified message.
-
-        If branch is None, the build is triggered on the default branch.
-        """
+    async def trigger_build(self, *, branch=None, message=None):
         # Format the data to use
         data = {
             "accountName": self.owner,
@@ -59,10 +42,8 @@ class AppVeyorClient(BaseClient):
     -----------
     token: :class:`str`
         The v1 token for accessing the user information.
-    args: :class:`list`
-        Arguments to pass into the :class:`BaseClient`.
-    kwargs: :class:`dict`
-        Keyword arguments to pass into the :class:`BaseClient`.
+    useragent: :class:`str`
+        The User-Agent header that the REST calls should use.
     """
     def __init__(self, token, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -70,14 +51,12 @@ class AppVeyorClient(BaseClient):
 
     async def get_project(self, slug):
         """
-        Gets a repository (also called project) from the AppVeyor account.
+        Gets a project from the AppVeyor account.
 
         Parameters
         -----------
         slug: :class:`str`
-            The `username/repo` or `organization/repo` to get the information from.
-
-            If the repo exists on the Git service but is not available on AppVeyor, this raises an exception.
+            The `owner/repo` to get the information from.
 
         Returns
         --------
