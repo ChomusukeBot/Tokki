@@ -9,11 +9,15 @@ class AppVeyorRepo(BaseProject):
     """
     @property
     def name(self):
-        return self.data["project"]["name"]
+        return self.data["project"]["slug"]
 
     @property
-    def slug(self):
-        return self.data["project"]["slug"]
+    def site_slug(self):
+        return self.owner + "/" + self.name
+
+    @property
+    def repo_slug(self):
+        return self.data["project"]["repositoryName"]
 
     @property
     def owner(self):
@@ -27,7 +31,7 @@ class AppVeyorRepo(BaseProject):
         # Format the data to use
         data = {
             "accountName": self.owner,
-            "projectSlug": self.slug,
+            "projectSlug": self.name,
             "branch": branch if branch else self.default_branch
         }
         # Just make a post request to trigger a build

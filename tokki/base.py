@@ -25,9 +25,16 @@ class BaseRepo():
         raise NotImplementedError
 
     @property
-    def slug(self):
+    def site_slug(self):
         """
-        :class:`str`: The slug of the repository.
+        :class:`str`: The slug assigned by the CI service.
+        """
+        raise NotImplementedError
+
+    @property
+    def repo_slug(self):
+        """
+        :class:`str`: The slug assigned by Git or Mercurial.
         """
         raise NotImplementedError
 
