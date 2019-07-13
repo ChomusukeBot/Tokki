@@ -10,7 +10,7 @@ python:
 
 # Install the package as normal
 install:
-  - pip install .[docs]
+  - pip install .[dev]
 
 # Run pytests
 script:
