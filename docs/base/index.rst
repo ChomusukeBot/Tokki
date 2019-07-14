@@ -7,3 +7,4 @@ Base Classes
     client
     repo
     project
+    build
