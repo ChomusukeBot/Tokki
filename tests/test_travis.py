@@ -3,7 +3,7 @@ import os
 import pytest
 from tokki.travis import TravisClient
 
-TOKEN = os.environ["TRAVIS_TOKEN"]
+TOKEN = os.environ["TRAVISCI_TOKEN"]
 AGENT = "Tests for Tokki +(https://github.com/ChomusukeBot/Tokki)"
 
 
