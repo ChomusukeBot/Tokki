@@ -106,6 +106,21 @@ class Project(Repo, metaclass=abc.ABCMeta):
             Custom messages are not available on AppVeyor.
         """
 
+    @abc.abstractmethod
+    async def get_builds(self, *, quantity=10):
+        """
+        Gets a specific number of builds from the project.
+
+        Parameters
+        -----------
+        quantity: :class:`int`
+            How many builds we should get.
+
+        Returns
+        --------
+        List[:class:`Build`]
+        """
+
 
 class Client(metaclass=abc.ABCMeta):
     """
