@@ -2,6 +2,43 @@ import aiohttp
 import asyncio
 
 
+class BaseBuild():
+    """
+    Base class for every CI build.
+    """
+    def __init__(self, data, client):
+        self.data = data
+        self.client = client
+
+    @property
+    def id(self):
+        """
+        :class:`int`: The internal identifier of the build.
+        """
+        raise NotImplementedError
+
+    @property
+    def version(self):
+        """
+        :class:`str`: The number or version of the build.
+        """
+        raise NotImplementedError
+
+    @property
+    def status(self):
+        """
+        :class:`tokki.enums.Status`: The number or version of the build.
+        """
+        raise NotImplementedError
+
+    @property
+    def status(self):
+        """
+        :class:`tokki.enums.Status`: The number or version of the build.
+        """
+        raise NotImplementedError
+
+
 class BaseRepo():
     """
     Base repository for all Git/Mercurial services.
