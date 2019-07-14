@@ -3,7 +3,7 @@ from .abc import Client, Project
 
 class TravisProject(Project):
     """
-    Project or Repo that resides on on Travis CI.
+    Project or Repo that resides on Travis CI.
 
     Create this class by calling :meth:`TravisClient.get_repo`.
     """
