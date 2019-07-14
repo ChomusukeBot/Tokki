@@ -1,7 +1,7 @@
 from .base import BaseClient, BaseProject
 
 
-class TravisRepo(BaseProject):
+class TravisProject(BaseProject):
     """
     Project or Repo that resides on on Travis CI.
 
@@ -82,4 +82,4 @@ class TravisClient(BaseClient):
         # Request the "specific repo" endpoint
         json = await self._get_request(f"https://api.travis-ci.com/repo/{slug}")
         # Return the new object
-        return TravisRepo(json, self)
+        return TravisProject(json, self)

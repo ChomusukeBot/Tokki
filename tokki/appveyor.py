@@ -1,7 +1,7 @@
 from .base import BaseClient, BaseProject
 
 
-class AppVeyorRepo(BaseProject):
+class AppVeyorProject(BaseProject):
     """
     Project or Repo managed by an AppVeyor user.
 
@@ -75,4 +75,4 @@ class AppVeyorClient(BaseClient):
         # Request the "specific repo" endpoint
         json = await self._get_request(f"https://ci.appveyor.com/api/projects/{slug}")
         # Return the new object
-        return AppVeyorRepo(json, self)
+        return AppVeyorProject(json, self)
