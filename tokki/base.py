@@ -31,13 +31,6 @@ class BaseBuild():
         """
         raise NotImplementedError
 
-    @property
-    def status(self):
-        """
-        :class:`tokki.enums.Status`: The number or version of the build.
-        """
-        raise NotImplementedError
-
 
 class BaseRepo():
     """
