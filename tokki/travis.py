@@ -12,8 +12,12 @@ class TravisRepo(BaseProject):
         return self.data["name"]
 
     @property
-    def slug(self):
-        return self.name.lower()
+    def site_slug(self):
+        return self.data["slug"]
+
+    @property
+    def repo_slug(self):
+        return self.data["slug"]
 
     @property
     def owner(self):
