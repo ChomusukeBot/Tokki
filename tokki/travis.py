@@ -80,6 +80,6 @@ class TravisClient(BaseClient):
         # Change the slash of the repo with one esaped
         slug = slug.replace("/", "%2F")
         # Request the "specific repo" endpoint
-        json = await self._get_request(f"https://api.travis-ci.com/repo/{slug}/")
+        json = await self._get_request(f"https://api.travis-ci.com/repo/{slug}")
         # Return the new object
         return TravisRepo(json, self)
