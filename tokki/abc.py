@@ -17,7 +17,6 @@ class Build(metaclass=abc.ABCMeta):
         """
         :class:`int`: The internal identifier of the build.
         """
-        raise NotImplementedError
 
     @property
     @abc.abstractmethod
@@ -25,7 +24,6 @@ class Build(metaclass=abc.ABCMeta):
         """
         :class:`str`: The number or version of the build.
         """
-        raise NotImplementedError
 
     @property
     @abc.abstractmethod
@@ -33,7 +31,6 @@ class Build(metaclass=abc.ABCMeta):
         """
         :class:`tokki.enums.Status`: The number or version of the build.
         """
-        raise NotImplementedError
 
 
 class Repo(metaclass=abc.ABCMeta):
@@ -57,7 +54,6 @@ class Repo(metaclass=abc.ABCMeta):
         """
         :class:`str`: The name of the repository.
         """
-        raise NotImplementedError
 
     @property
     @abc.abstractmethod
@@ -65,7 +61,6 @@ class Repo(metaclass=abc.ABCMeta):
         """
         :class:`str`: The slug assigned by the CI service.
         """
-        raise NotImplementedError
 
     @property
     @abc.abstractmethod
@@ -73,7 +68,6 @@ class Repo(metaclass=abc.ABCMeta):
         """
         :class:`str`: The slug assigned by Git or Mercurial.
         """
-        raise NotImplementedError
 
     @property
     @abc.abstractmethod
@@ -81,7 +75,6 @@ class Repo(metaclass=abc.ABCMeta):
         """
         :class:`str`: The user or organization that owns the repo.
         """
-        raise NotImplementedError
 
     @property
     @abc.abstractmethod
@@ -89,7 +82,6 @@ class Repo(metaclass=abc.ABCMeta):
         """
         :class:`str`: The default branch of the project.
         """
-        raise NotImplementedError
 
 
 class Project(Repo, metaclass=abc.ABCMeta):
@@ -113,7 +105,6 @@ class Project(Repo, metaclass=abc.ABCMeta):
             The custom message to show on the build.
             Custom messages are not available on AppVeyor.
         """
-        raise NotImplementedError
 
 
 class Client(metaclass=abc.ABCMeta):
