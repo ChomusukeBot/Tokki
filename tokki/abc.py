@@ -1,8 +1,9 @@
+import abc
 import aiohttp
 import asyncio
 
 
-class BaseBuild():
+class Build(metaclass=abc.ABCMeta):
     """
     Base class for every CI build.
     """
@@ -11,6 +12,7 @@ class BaseBuild():
         self.client = client
 
     @property
+    @abc.abstractmethod
     def id(self):
         """
         :class:`int`: The internal identifier of the build.
@@ -18,6 +20,7 @@ class BaseBuild():
         raise NotImplementedError
 
     @property
+    @abc.abstractmethod
     def version(self):
         """
         :class:`str`: The number or version of the build.
@@ -25,6 +28,7 @@ class BaseBuild():
         raise NotImplementedError
 
     @property
+    @abc.abstractmethod
     def status(self):
         """
         :class:`tokki.enums.Status`: The number or version of the build.
@@ -32,7 +36,7 @@ class BaseBuild():
         raise NotImplementedError
 
 
-class BaseRepo():
+class Repo(metaclass=abc.ABCMeta):
     """
     Base repository for all Git/Mercurial services.
 
@@ -40,7 +44,7 @@ class BaseRepo():
     -----------
     data: :class:`dict`
         Raw JSON response sent by the service.
-    client: :class:`BaseClient`
+    client: :class:`Client`
         The client that generated this request.
     """
     def __init__(self, data, client):
@@ -48,6 +52,7 @@ class BaseRepo():
         self.client = client
 
     @property
+    @abc.abstractmethod
     def name(self):
         """
         :class:`str`: The name of the repository.
@@ -55,6 +60,7 @@ class BaseRepo():
         raise NotImplementedError
 
     @property
+    @abc.abstractmethod
     def site_slug(self):
         """
         :class:`str`: The slug assigned by the CI service.
@@ -62,6 +68,7 @@ class BaseRepo():
         raise NotImplementedError
 
     @property
+    @abc.abstractmethod
     def repo_slug(self):
         """
         :class:`str`: The slug assigned by Git or Mercurial.
@@ -69,6 +76,7 @@ class BaseRepo():
         raise NotImplementedError
 
     @property
+    @abc.abstractmethod
     def owner(self):
         """
         :class:`str`: The user or organization that owns the repo.
@@ -76,6 +84,7 @@ class BaseRepo():
         raise NotImplementedError
 
     @property
+    @abc.abstractmethod
     def default_branch(self):
         """
         :class:`str`: The default branch of the project.
@@ -83,14 +92,15 @@ class BaseRepo():
         raise NotImplementedError
 
 
-class BaseProject(BaseRepo):
+class Project(Repo, metaclass=abc.ABCMeta):
     """
     Base for all Continous Integration projects.
 
     A Project is a Repo inside a CI service.
 
-    It takes the same parameters as :class:`BaseRepo`.
+    It takes the same parameters as :class:`Repo`.
     """
+    @abc.abstractmethod
     async def trigger_build(self, *, branch=None, message=None):
         """
         Triggers a manual build of the project.
@@ -106,7 +116,7 @@ class BaseProject(BaseRepo):
         raise NotImplementedError
 
 
-class BaseClient():
+class Client(metaclass=abc.ABCMeta):
     """
     Base client for all of the APIs.
 

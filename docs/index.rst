@@ -11,12 +11,12 @@ Tokki is a Python Package that provides Asynchronous APIs for the following serv
 
 It was originally created for the use on Discord.py bots, to avoid the blocking of the loop when making REST request to the APIs.
 
-Base Classes
--------------
+Abstract Base Classes
+----------------------
 
-Tokki provides a set of classes for adding new services with ease, they are:
+Tokki provides a set of ABCs for adding new services with ease, they are:
 
 .. toctree::
     :maxdepth: 2
 
-    base/index
+    abc/index

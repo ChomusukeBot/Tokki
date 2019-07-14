@@ -1,8 +1,8 @@
-.. currentmodule:: tokki.base
+.. currentmodule:: tokki.abc
 
 Repository
 ===========
 
-.. autoclass:: BaseRepo
+.. autoclass:: Repo
     :members:
     :private-members:

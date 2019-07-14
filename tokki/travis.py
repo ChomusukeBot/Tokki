@@ -1,7 +1,7 @@
-from .base import BaseClient, BaseProject
+from .abc import Client, Project
 
 
-class TravisProject(BaseProject):
+class TravisProject(Project):
     """
     Project or Repo that resides on on Travis CI.
 
@@ -42,7 +42,7 @@ class TravisProject(BaseProject):
         await self.client._post_request(f"https://api.travis-ci.com/repo/{self.owner}%2F{self.name}/requests", data)
 
 
-class TravisClient(BaseClient):
+class TravisClient(Client):
     """
     Represents a client for accessing the Travis CI API.
 

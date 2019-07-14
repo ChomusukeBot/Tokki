@@ -1,5 +1,5 @@
-Base Classes
-=============
+ABCs
+=====
 
 .. toctree::
     :maxdepth: 2

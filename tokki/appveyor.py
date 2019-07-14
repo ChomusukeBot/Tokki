@@ -1,7 +1,7 @@
-from .base import BaseClient, BaseProject
+from .abc import Client, Project
 
 
-class AppVeyorProject(BaseProject):
+class AppVeyorProject(Project):
     """
     Project or Repo managed by an AppVeyor user.
 
@@ -38,7 +38,7 @@ class AppVeyorProject(BaseProject):
         await self.client._post_request("https://ci.appveyor.com/api/builds", data)
 
 
-class AppVeyorClient(BaseClient):
+class AppVeyorClient(Client):
     """
     Represents a client for accessing the information of a single user with their v1 token.
 
