@@ -32,6 +32,13 @@ class Build(metaclass=abc.ABCMeta):
         :class:`tokki.enums.Status`: The number or version of the build.
         """
 
+    @property
+    @abc.abstractmethod
+    def branch(self):
+        """
+        :class:`str`: The branch that originated the build.
+        """
+
 
 class Repo(metaclass=abc.ABCMeta):
     """
