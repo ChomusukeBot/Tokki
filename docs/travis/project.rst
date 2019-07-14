@@ -3,6 +3,6 @@
 Project
 ========
 
-.. autoclass:: TravisRepo
+.. autoclass:: TravisProject
     :members:
     :inherited-members:

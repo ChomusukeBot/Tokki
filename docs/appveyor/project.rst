@@ -3,6 +3,6 @@
 Project
 ========
 
-.. autoclass:: AppVeyorRepo
+.. autoclass:: AppVeyorProject
     :members:
     :inherited-members:
