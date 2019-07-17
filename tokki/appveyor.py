@@ -27,6 +27,9 @@ class AppVeyorProject(Project):
     def default_branch(self):
         return self.data["project"]["repositoryBranch"]
 
+    async def get_builds(self):
+        pass
+
     async def trigger_build(self, *, branch=None, message=None):
         # Format the data to use
         data = {
