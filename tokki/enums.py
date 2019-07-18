@@ -17,7 +17,13 @@ class Status(Enum):
         """
         # A dict with the correct statuses
         statuses = {
-            "passed": Status.Success
+            "created": Status.InProgress,  # Travis
+            "received": Status.InProgress,  # Travis
+            "started": Status.InProgress,  # Travis
+            "passed": Status.Success,  # Travis
+            "failed": Status.Failed,  # Travis
+            "errored": Status.Failed,  # Travis
+            "canceled": Status.Canceled,  # Travis
         }
 
         # If the name does not exists, throw an exception
