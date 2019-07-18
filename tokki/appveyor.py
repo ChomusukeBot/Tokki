@@ -45,9 +45,6 @@ class AppVeyorProject(Project):
     def default_branch(self):
         return self.data["project"]["repositoryBranch"]
 
-    async def get_builds(self):
-        pass
-
     async def trigger_build(self, *, branch=None, message=None):
         # Format the data to use
         data = {
@@ -57,6 +54,12 @@ class AppVeyorProject(Project):
         }
         # Just make a post request to trigger a build
         await self.client._post_request("https://ci.appveyor.com/api/builds", data)
+
+    async def get_builds(self, *, quantity=10):
+        # Request the JSON with the responses
+        json = await self.client._get_request(f"https://ci.appveyor.com/api/projects/{self.site_slug}/history?recordsNumber={quantity}")
+        # Then return the JSON parsed as our custom classes
+        return [AppVeyorBuild(x) for x in json["builds"]]
 
 
 class AppVeyorClient(Client):
