@@ -63,7 +63,7 @@ class AppVeyorProject(Project):
         # Request the JSON with the responses
         json = await self.client._get_request(f"https://ci.appveyor.com/api/projects/{self.site_slug}/history?recordsNumber={quantity}")
         # Then return the JSON parsed as our custom classes
-        return [AppVeyorBuild(x) for x in json["builds"]]
+        return [AppVeyorBuild(x, self) for x in json["builds"]]
 
 
 class AppVeyorClient(Client):

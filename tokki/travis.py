@@ -67,7 +67,7 @@ class TravisProject(Project):
         # Request the JSON with the responses
         json = await self.client._get_request(f"https://api.travis-ci.com/repo/{self.owner}%2F{self.name}/builds?limit={quantity}")
         # Then return the JSON parsed as our custom classes
-        return [TravisBuild(x) for x in json["builds"]]
+        return [TravisBuild(x, self) for x in json["builds"]]
 
 
 class TravisClient(Client):
