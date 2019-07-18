@@ -20,7 +20,7 @@ class TravisBuild(Build):
 
     @property
     def branch(self):
-        return self.data["branch"]
+        return self.data["branch"]["name"]
 
 
 class TravisProject(Project):
