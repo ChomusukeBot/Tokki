@@ -21,11 +21,17 @@ class Status(Enum):
             "received": Status.InProgress,  # Travis
             "started": Status.InProgress,  # Travis
             "passed": Status.Success,  # Travis
-            "failed": Status.Failed,  # Travis
             "errored": Status.Failed,  # Travis
             "canceled": Status.Canceled,  # Travis
 
-            "success": Status.Success,  # AppVeyor
+            "cancelled": Status.Canceled,  # AppVeyor
+            "cancelling": Status.Canceled,  # AppVeyor
+            "queued": Status.InProgress,  # AppVeyor
+            "running": Status.InProgress,  # AppVeyor
+            "starting": Status.InProgress,  # AppVeyor
+            "success": Status.InProgress,  # AppVeyor
+
+            "failed": Status.Failed,  # Both
         }
 
         # If the name does not exists, throw an exception
