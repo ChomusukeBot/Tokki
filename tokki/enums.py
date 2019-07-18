@@ -8,6 +8,7 @@ class Status(Enum):
     InProgress = 0
     Success = 1
     Failed = 2
+    Canceled = 3
 
     @staticmethod
     def from_name(name):
