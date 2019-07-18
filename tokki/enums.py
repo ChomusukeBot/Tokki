@@ -8,3 +8,17 @@ class Status(Enum):
     InProgress = 0
     Success = 1
     Failed = 2
+
+    @staticmethod
+    def from_name(name):
+        """
+        Returns the correct Status from the string outputed of a CI service.
+        """
+        # A dict with the correct statuses
+        statuses = {
+            "passed": Status.Success
+        }
+
+        # If the name does not exists, throw an exception
+        if name not in statuses:
+            raise ValueError
