@@ -29,3 +29,6 @@ class Status(Enum):
         # If the name does not exists, throw an exception
         if name not in statuses:
             raise ValueError
+
+        # Finally, return the value
+        return statuses[name]
