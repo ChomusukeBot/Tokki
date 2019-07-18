@@ -24,6 +24,8 @@ class Status(Enum):
             "failed": Status.Failed,  # Travis
             "errored": Status.Failed,  # Travis
             "canceled": Status.Canceled,  # Travis
+
+            "success": Status.Success,  # AppVeyor
         }
 
         # If the name does not exists, throw an exception
