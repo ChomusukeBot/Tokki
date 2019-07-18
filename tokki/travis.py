@@ -18,6 +18,10 @@ class TravisBuild(Build):
     def status(self):
         return Status.from_name(self.data["state"])
 
+    @property
+    def branch(self):
+        return self.data["branch"]
+
 
 class TravisProject(Project):
     """

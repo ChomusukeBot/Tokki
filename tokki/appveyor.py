@@ -18,6 +18,10 @@ class AppVeyorBuild(Build):
     def status(self):
         return Status.from_name(self.data["status"])
 
+    @property
+    def branch(self):
+        return self.data["branch"]
+
 
 class AppVeyorProject(Project):
     """
