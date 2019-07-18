@@ -43,3 +43,11 @@ async def test_trigger_build():
     client = AppVeyorClient(TOKEN, AGENT)
     repo = await client.get_repo("justalemon/testrepo")
     await repo.trigger_build(branch="master", message="Run from Tokki's tests")
+
+
+@pytest.mark.asyncio
+async def test_get_builds():
+    client = AppVeyorClient(TOKEN, AGENT)
+    repo = await client.get_repo("justalemon/testrepo")
+    assert len(await repo.get_builds(quantity=1)) == 1
+    assert len(await repo.get_builds(quantity=5)) == 5
