@@ -1,4 +1,22 @@
-from .abc import Client, Project
+from .abc import Build, Client, Project
+from .enums import Status
+
+
+class TravisBuild(Build):
+    """
+    Build that was created on Travis CI.
+    """
+    @property
+    def id(self):
+        return self.data["id"]
+
+    @property
+    def version(self):
+        return "#" + self.data["number"]
+
+    @property
+    def status(self):
+        return Status.from_name(self.data["state"])
 
 
 class TravisProject(Project):

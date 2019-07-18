@@ -1,4 +1,22 @@
-from .abc import Client, Project
+from .abc import Build, Client, Project
+from .enums import Status
+
+
+class AppVeyorBuild(Build):
+    """
+    Build that was created on AppVeyor.
+    """
+    @property
+    def id(self):
+        return self.data["buildId"]
+
+    @property
+    def version(self):
+        return self.data["version"]
+
+    @property
+    def status(self):
+        return Status.from_name(self.data["status"])
 
 
 class AppVeyorProject(Project):
